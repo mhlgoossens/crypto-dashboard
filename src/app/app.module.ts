@@ -4,14 +4,14 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { ContactComponent } from './contact/contact.component';
-import { AboutComponent } from './about/about.component';
-import { ProfileComponent } from './profile/profile.component';
-import { PortfolioComponent } from './portfolio/portfolio.component';
-import { CurrencyOverviewComponent } from './currency-overview/currency-overview.component';
-import { HeaderComponent } from './header/header.component';
+import { NavbarComponent } from './core/navbar/navbar.component';
+import { HeaderComponent } from './core/header/header.component';
+import { ContactComponent } from './docs/contact/contact.component';
+import { AboutComponent } from './docs/about/about.component';
+import { CurrencyOverviewComponent } from './features/currency-overview/currency-overview.component';
+import { HomeComponent } from './features/home/home.component';
+import { ProfileComponent } from './features/profile/profile.component';
+import { PortfolioComponent } from './features/portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
