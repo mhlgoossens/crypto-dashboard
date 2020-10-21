@@ -31,8 +31,8 @@ import { AlertComponent } from './shared/alert/alert.component';
       { path: 'home', component: HomeComponent },
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       {
-        path: 'currency-overview',
-        loadChildren: () => import('./features/currency-overview/currency-overview.module').then(m => m.CurrencyOverviewModule)
+        path: 'currencies',
+        loadChildren: () => import('./features/currencies/currencies.module').then(m => m.CurrenciesModule)
       },
       {
         path: 'docs',
