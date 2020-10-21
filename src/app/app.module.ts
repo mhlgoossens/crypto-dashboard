@@ -29,6 +29,7 @@ import { AlertComponent } from './shared/alert/alert.component';
     AlertModule.forRoot(),
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
       {
         path: 'currency-overview',
         loadChildren: () => import('./features/currency-overview/currency-overview.module').then(m => m.CurrencyOverviewModule)
