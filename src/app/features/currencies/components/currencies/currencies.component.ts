@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GetCurrencyService } from '../../services/get-currency.service';
+import { Currency } from '../currency/currency.model';
 
 @Component({
   selector: 'app-currencies',
@@ -9,7 +11,7 @@ export class CurrenciesComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit() {
 
+  }
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { PortfolioComponent } from './features/portfolio/portfolio.component';
 // ngx bootstrap
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { AlertComponent } from './shared/alert/alert.component';
+import { GetCurrencyService } from './features/currencies/services/get-currency.service';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { AlertComponent } from './shared/alert/alert.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AlertModule.forRoot(),
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
@@ -43,7 +46,7 @@ import { AlertComponent } from './shared/alert/alert.component';
     ]),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [GetCurrencyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

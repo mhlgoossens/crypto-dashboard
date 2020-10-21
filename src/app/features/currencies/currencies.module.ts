@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CurrenciesComponent } from './components/currencies/currencies.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { CurrencyComponent } from './components/currency/currency.component';
 
 const routes: Routes = [{
   path: '',
@@ -12,7 +13,8 @@ const routes: Routes = [{
 
 @NgModule({
   declarations: [
-    CurrenciesComponent
+    CurrenciesComponent,
+    CurrencyComponent
   ],
   imports: [
     CommonModule,
