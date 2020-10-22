@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GetCurrencyService } from '../../services/get-currency.service';
-import { Currency } from '../currency/currency.model';
 
 @Component({
   selector: 'app-currencies',
@@ -9,6 +7,23 @@ import { Currency } from '../currency/currency.model';
 })
 export class CurrenciesComponent implements OnInit {
 
+  currencies: { name: string, base: string, currency: string }[] = [
+    {
+      name: 'Bitcoin',
+      base: 'BTC',
+      currency: 'USD'
+    },
+    {
+      name: 'LiteCoin',
+      base: 'LTC',
+      currency: 'USD'
+    },
+    {
+      name: 'Bitcoin',
+      base: 'BTC',
+      currency: 'USD'
+    },
+  ]
   constructor() { }
 
   ngOnInit() {

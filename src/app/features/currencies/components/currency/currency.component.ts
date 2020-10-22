@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { GetCurrencyService } from '../../services/get-currency.service';
-import { Currency } from './currency.model';
 
 @Component({
   selector: 'app-currency',
@@ -8,16 +8,13 @@ import { Currency } from './currency.model';
   styleUrls: ['./currency.component.scss']
 })
 export class CurrencyComponent implements OnInit {
-  // currency$: Object;
+  // @Input
   currency$;
 
   constructor(private getCurrencyService: GetCurrencyService) { }
 
-  // removed type : void from ngOnInit
-  ngOnInit() {
-    return this.currency$ = this.getCurrencyService.getCurrency();
-    // return this.getCurrencyService.getCurrency().subscribe(data => this.currency$ = data.data && console.log(data.data));
-    
+  ngOnInit(): Observable<any> {
+    return this.currency$ = this.getCurrencyService.getCurrency('BTC', 'USD');    
   }
 
 }
