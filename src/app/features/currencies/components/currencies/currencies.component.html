@@ -1,7 +1,9 @@
 <div class="card-deck">
-  <app-currency></app-currency>
-  <app-currency></app-currency>
-  <app-currency></app-currency>
+  <app-currency 
+    *ngFor="let currency of currencies" 
+    base={{currency.base}} 
+    fiat={{currency.fiat}} 
+  ></app-currency>
 </div>
 
 <ul>

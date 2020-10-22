@@ -7,22 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CurrenciesComponent implements OnInit {
 
-  currencies: { name: string, base: string, currency: string }[] = [
+  // TK should this be like an interface?
+  currencies: { name: string, base: string, fiat: string }[] = [
     {
       name: 'Bitcoin',
       base: 'BTC',
-      currency: 'USD'
+      fiat: 'USD'
     },
     {
       name: 'LiteCoin',
       base: 'LTC',
-      currency: 'USD'
+      fiat: 'USD'
     },
     {
-      name: 'Bitcoin',
-      base: 'BTC',
-      currency: 'USD'
-    },
+      name: 'Ethereum',
+      base: 'ETH',
+      fiat: 'USD'
+    }
   ]
   constructor() { }
 

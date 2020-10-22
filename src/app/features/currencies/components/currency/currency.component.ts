@@ -8,7 +8,10 @@ import { GetCurrencyService } from '../../services/get-currency.service';
   styleUrls: ['./currency.component.scss']
 })
 export class CurrencyComponent implements OnInit {
-  // @Input
+  @Input() base: string;
+  @Input() fiat: string;
+
+  // TK hier moet ik iets mee
   currency$;
 
   constructor(private getCurrencyService: GetCurrencyService) { }
