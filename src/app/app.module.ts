@@ -14,6 +14,7 @@ import { PortfolioComponent } from './features/portfolio/portfolio.component';
 // ngx bootstrap
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { AlertComponent } from './shared/alert/alert.component';
+
 import { GetCurrencyService } from './features/currencies/services/get-currency.service';
 
 @NgModule({

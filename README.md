@@ -1,5 +1,6 @@
 # CryptoDashboard
 
+Deployed on [heroku](https://crypto-dashboard-angular.herokuapp.com/)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.5.
 
 ## Development server
