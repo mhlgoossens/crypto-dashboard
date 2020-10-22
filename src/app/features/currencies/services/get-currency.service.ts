@@ -12,8 +12,8 @@ export class GetCurrencyService {
 
   constructor(private _http: HttpClient) { }
 
-  getCurrency (crypto: string, currency: string): Observable<string> {
-    return this._http.get(`${this.apiUrl}/${crypto}-${currency}/spot`)
+  getCurrency (base: string, fiat: string): Observable<string> {
+    return this._http.get(`${this.apiUrl}/${base}-${fiat}/spot`)
       .pipe(
         tap((res:CurrencyResponse) => console.log(res)),
         map((res:CurrencyResponse) => res.data.amount))

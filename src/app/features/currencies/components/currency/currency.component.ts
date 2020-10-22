@@ -8,8 +8,7 @@ import { GetCurrencyService } from '../../services/get-currency.service';
   styleUrls: ['./currency.component.scss']
 })
 export class CurrencyComponent implements OnInit {
-  @Input() base: string;
-  @Input() fiat: string;
+  @Input() currency;
 
   // TK hier moet ik iets mee
   currency$;
@@ -17,7 +16,7 @@ export class CurrencyComponent implements OnInit {
   constructor(private getCurrencyService: GetCurrencyService) { }
 
   ngOnInit(): Observable<any> {
-    return this.currency$ = this.getCurrencyService.getCurrency('BTC', 'USD');    
+    return this.currency$ = this.getCurrencyService.getCurrency(this.currency.base, this.currency.fiat);
   }
 
 }
