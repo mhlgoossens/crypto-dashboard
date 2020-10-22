@@ -4,7 +4,7 @@
   </div>
   <div class="card-body">
     <h5 class="card-title">1 {{currency.base}}: {{ currency$ | async | currency: currency.fiat }}</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="card-text">yesterday: {{ currencyYesterday$ | async | currency: currency.fiat }}</p>
     <div class="card-footer">
       <small class="text-muted">
         3 mins ago

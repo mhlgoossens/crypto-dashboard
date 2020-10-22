@@ -12,11 +12,12 @@ export class CurrencyComponent implements OnInit {
 
   // TK hier moet ik iets mee
   currency$;
+  currencyYesterday$;
 
   constructor(private getCurrencyService: GetCurrencyService) { }
 
   ngOnInit(): Observable<any> {
-    return this.currency$ = this.getCurrencyService.getCurrency(this.currency.base, this.currency.fiat);
+    return (this.currency$ = this.getCurrencyService.getCurrency(this.currency.base, this.currency.fiat)) && (this.currencyYesterday$ = this.getCurrencyService.getCurrency(this.currency.base, this.currency.fiat, '2020-10-21'));
   }
 
 }
