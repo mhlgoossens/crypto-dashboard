@@ -6,30 +6,26 @@
   <div class="card-body">
     <h5 class="card-title">Select currencies</h5>
     <form [formGroup]="currencyForm">
+      <div class="form-group">
+        <select class="custom-select" formControlName="crypto">
+            <option *ngFor="let crypto of cryptos" [value]="crypto.base">
+              {{crypto.base}}
+            </option>
+          </select>
+      </div>
 
-    <div class="form-group">
-
-      <select class="custom-select" formControlName="currency">
-          <!-- TK met 'cryptoBase' krijg ik deze niet aan de praat -->
-          <!-- <option vaule="" disabled selected>Select crypto</option> -->
-          <option *ngFor="let currency of currencies" [value]="currency.base">
-            {{currency.base}}
+      <div class="form-group">
+        <select class="custom-select" formControlName="fiat">
+          <option value="" disabled selected>Select fiat from fetch</option>
+          <option *ngFor="let fiat of fiats$ | async | keyvalue" [value]="fiat.key">
+            {{fiat.key}}
           </option>
         </select>
       </div>
-
-    <div class="form-group">    
-      <select class="custom-select" formControlName="fiat">
-        <option value="" disabled selected>Select fiat from fetch</option>
-        <option *ngFor="let fiat of fiats$ | async | keyvalue" [value]="fiat.key">
-          {{fiat.key}}
-        </option>
-      </select>
-    </div>
-  </form>
+    </form>
 
   <p class="card-text" *ngIf="(fiats$ | async) as fiats">
-      1 {{ currencyForm.get('currency').value }} = {{ fiats[currencyForm.get('fiat').value] }} {{ currencyForm.get('fiat').value }}
+      1 {{ currencyForm.get('crypto').value }} = {{ fiats[currencyForm.get('fiat').value] | currency: (currencyForm.get('fiat').value) }}
   </p>
 
     <div class="card-footer">

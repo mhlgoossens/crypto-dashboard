@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class CurrenciesComponent implements OnInit {
 
   // TK should this be like an interface?
-  currencies: { name: string, base: string, fiat: string }[] = [
+  // TK should I store this elsewhere?
+  cryptos: { name: string, base: string, fiat: string }[] = [
     {
       name: 'Bitcoin',
       base: 'BTC',
@@ -20,31 +21,19 @@ export class CurrenciesComponent implements OnInit {
       fiat: 'USD'
     },
     {
+      name: 'Ripple',
+      base: 'XRP',
+      fiat: 'USD'
+    },
+    {
       name: 'Ethereum',
       base: 'ETH',
       fiat: 'USD'
     }
-  ]
-
-  // TK typing?
-  cryptoBase: string[] = [
-    'BTC',
-    'LTC',
-    'ETH',
-    'XRP'
-  ]
-
-  fiat: string[] = [
-    'EUR',
-    'USD',
-    ''
-  ]
-
-  selectedCrytpo: string = 'LTC'
+  ];
 
   constructor() { }
 
-  ngOnInit() {
-
+  ngOnInit(): void {
   }
 }
