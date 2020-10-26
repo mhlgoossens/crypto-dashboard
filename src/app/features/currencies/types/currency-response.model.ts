@@ -1,7 +1,9 @@
+// TK: hoe typeer ik een object waarvan ik wel de structuur weet (zoals rates), maar waarvan ik niet weet hoeveel strings erin zitten?
 export interface CurrencyResponse {
   data: {
-    amount: string;
-    base: string;
-    currency: string;
+    currency: string,
+    rates: {
+      fiat: string
+    }
   }
 }

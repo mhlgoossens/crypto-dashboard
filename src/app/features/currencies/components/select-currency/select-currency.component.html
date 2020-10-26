@@ -1,0 +1,42 @@
+
+<div class="card bg-light mb-3" style="max-width: 16rem;">
+  <div class="card-header">
+    <img src="https://picsum.photos/300/200?grayscale">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Select currencies</h5>
+    <form [formGroup]="currencyForm">
+
+    <div class="form-group">
+
+      <select class="custom-select" formControlName="currency">
+          <!-- TK met 'cryptoBase' krijg ik deze niet aan de praat -->
+          <!-- <option vaule="" disabled selected>Select crypto</option> -->
+          <option *ngFor="let currency of currencies" [value]="currency.base">
+            {{currency.base}}
+          </option>
+        </select>
+      </div>
+
+    <div class="form-group">    
+      <select class="custom-select" formControlName="fiat">
+        <option value="" disabled selected>Select fiat from fetch</option>
+        <option *ngFor="let fiat of fiats$ | async | keyvalue" [value]="fiat.key">
+          {{fiat.key}}
+        </option>
+      </select>
+    </div>
+  </form>
+
+  <p class="card-text" *ngIf="(fiats$ | async) as fiats">
+      1 {{ currencyForm.get('currency').value }} = {{ fiats[currencyForm.get('fiat').value] }} {{ currencyForm.get('fiat').value }}
+  </p>
+
+    <div class="card-footer">
+      <small class="text-muted">
+        3 mins ago
+        <a href="#" class="card-link"> - start tracking</a>
+      </small>
+    </div>
+  </div>
+</div>

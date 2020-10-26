@@ -1,9 +1,14 @@
-<div class="card-deck">
+<!-- <div class="card-deck">
   <app-currency 
     *ngFor="let currency of currencies" 
     [currency]="currency"
   ></app-currency>
-</div>
+</div> -->
+
+<app-select-currency
+ [currencies]="currencies" 
+>
+</app-select-currency> 
 
 <ul>
   <li><a href="https://www.chartjs.org/">Chart.js</a></li>

@@ -16,8 +16,8 @@ export class CurrencyComponent implements OnInit {
 
   constructor(private getCurrencyService: GetCurrencyService) { }
 
-  ngOnInit(): Observable<any> {
-    return (this.currency$ = this.getCurrencyService.getCurrency(this.currency.base, this.currency.fiat)) && (this.currencyYesterday$ = this.getCurrencyService.getCurrency(this.currency.base, this.currency.fiat, '2020-10-21'));
+  ngOnInit(): void {
+    // return (this.currency$ = this.getCurrencyService.getCurrency(this.currency.base, this.currency.fiat)) && (this.currencyYesterday$ = this.getCurrencyService.getCurrency(this.currency.base, this.currency.fiat, '2020-10-21'));
   }
 
 }

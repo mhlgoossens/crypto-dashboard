@@ -25,6 +25,23 @@ export class CurrenciesComponent implements OnInit {
       fiat: 'USD'
     }
   ]
+
+  // TK typing?
+  cryptoBase: string[] = [
+    'BTC',
+    'LTC',
+    'ETH',
+    'XRP'
+  ]
+
+  fiat: string[] = [
+    'EUR',
+    'USD',
+    ''
+  ]
+
+  selectedCrytpo: string = 'LTC'
+
   constructor() { }
 
   ngOnInit() {
