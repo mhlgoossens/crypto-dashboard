@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { startWith, switchMap, tap } from 'rxjs/operators';
+import { delay, map, startWith, switchAll, switchMap, tap } from 'rxjs/operators';
 import { GetCurrencyService } from '../../services/get-currency.service';
 
 @Component({
@@ -30,8 +30,11 @@ export class SelectCurrencyComponent implements OnInit {
 
     this.fiats$ = this.currencyForm.get('crypto').valueChanges.pipe(
       startWith('BTC'),
-      switchMap(fiat => this.getCurrencyService.getCurrency(fiat)),
+      map(crypto => this.getCurrencyService.getCurrency(crypto)),
+      switchAll(),
       tap(data => console.log(data))
+      // switchMap(crypto => this.getCurrencyService.getCurrency(crypto)),
+      // map(crypto => this.getCurrencyService.getCurrency(crypto))
     );
   }
 }
