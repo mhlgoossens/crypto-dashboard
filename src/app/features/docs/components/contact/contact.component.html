@@ -1,4 +1,38 @@
-<p>contact works!</p>
-
-<button (click)="activateLogger()">Log Hello</button>
-{{ clickMessage }}
+<h1>Contact form</h1>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label
+      >Topic:
+      <select class="form-control" formControlName="topic">
+        <option *ngFor="let t of topics">
+          {{t}}
+        </option>
+      </select>
+    </label>
+    <label
+      >Name:
+      <input type="text" formControlName="name" placeholder="Name or alias" />
+    </label>
+    <label>
+      Email:
+      <input type="email" formControlName="email" placeholder="rick@astley-industries.com">
+    </label>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Message:</label>
+      <textarea class="form-control" formControlName="message" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        formControlName="terms"
+        type="checkbox"
+        value=""
+        id="defaultCheck1"
+      />
+      <label class="form-check-label" for="defaultCheck1">
+        Agree to terms
+      </label>
+    </div>
+  </div>
+  <button type="submit">Submit</button>
+</form>

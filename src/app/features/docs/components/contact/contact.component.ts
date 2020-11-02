@@ -1,26 +1,37 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit {
-  @Output() logRequest = new EventEmitter;
+  contactForm: FormGroup;
+  topics: string[] = [
+    'foreign currencies',
+    'general support',
+    'security issues',
+    'other'
+  ]
 
-  clickMessage = 'not clicked yet';
-  counter = 0;
-
-  activateLogger = () => {
-    this.counter += 1;
-    this.logRequest.emit(console.log('hello x', this.counter));
-    this.clickMessage = `clicked ${this.counter} times`;
-
-  }
-  constructor() { }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    
+    this.initializeForm();
   }
 
+  initializeForm(): void {
+    this.contactForm = this.fb.group({
+      topic: '',
+      name: '',
+      email: '',
+      message: '',
+      terms: false,
+    });
+  }
+
+  onSubmit(): void {
+    console.log(this.contactForm);
+  }
 }
