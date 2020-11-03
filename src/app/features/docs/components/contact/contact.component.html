@@ -5,6 +5,7 @@
       <label
         >Topic:
         <select class="form-control" formControlName="topic">
+          <option value="null" disabled selected>Select an option</option>
           <option *ngFor="let t of topics">
             {{ t }}
           </option>
@@ -126,7 +127,7 @@
     >
     </div>
   </div>
-  <button type="submit" class="btn btn-primary mb-2">Submit</button>
+  <button type="submit" [disabled]="!this.contactForm.valid" class="btn btn-primary mb-2">Submit</button>
 </form>
 
 <p>Status: {{ contactForm.status }}</p>
