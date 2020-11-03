@@ -31,6 +31,25 @@
       </label>
     </div>
     <div class="form-group">
+      <label
+        >Age:
+        <input
+          class="form-control"
+          type="text"
+          formControlName="age"
+          placeholder="age"
+        />
+        <span
+          *ngIf="
+            !this.contactForm.get('age').valid &&
+            this.contactForm.get('age').touched
+          "
+          class="form-text text-muted"
+          >Must be 18 years of age or older</span
+        >
+      </label>
+    </div>
+    <div class="form-group">
       <label>
         Email:
         <input
@@ -50,25 +69,61 @@
       </label>
     </div>
     <div class="form-group">
+      <label>
+        Reference number:
+        <input
+          class="form-control"
+          type="text"
+          formControlName="referenceNumber"
+          placeholder="e.g. 674321"
+        />
+        <span
+          *ngIf="
+            !this.contactForm.get('referenceNumber').valid &&
+            this.contactForm.get('referenceNumber').touched
+          "
+          class="form-text text-muted"
+          >Either leave empty, or enter a valid reference number. Only numbers (0-9) are accepted</span
+        >
+      </label>
+    </div>
+    <div class="form-group">
       <label for="exampleFormControlTextarea1">Message:</label>
       <textarea
         class="form-control"
+        type="text"
         formControlName="message"
         id="exampleFormControlTextarea1"
         rows="3"
       ></textarea>
+      <span
+      *ngIf="
+        !this.contactForm.get('message').valid &&
+        this.contactForm.get('message').touched
+      "
+      class="form-text text-muted"
+      >Please enter a message between 20 and 200 characters</span
+    >
     </div>
     <div class="form-check">
       <input
         class="form-check-input"
         formControlName="terms"
         type="checkbox"
-        value=""
+        value="false"
         id="defaultCheck1"
       />
       <label class="form-check-label" for="defaultCheck1">
         Agree to terms
       </label>
+      <span
+      *ngIf="
+        !this.contactForm.get('terms').valid &&
+        this.contactForm.get('terms').touched
+      "
+      class="form-text text-muted"
+      >Please agree to our <a href="https://www.youtube.com/watch?v=QD0uWNYLSbA">terms</a> before submitting</span
+    >
     </div>
   </div>
   <button type="submit" class="btn btn-primary mb-2">Submit</button>

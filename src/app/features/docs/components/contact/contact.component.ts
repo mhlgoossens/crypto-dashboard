@@ -12,8 +12,8 @@ export class ContactComponent implements OnInit {
     'foreign currencies',
     'general support',
     'security issues',
-    'other'
-  ]
+    'other',
+  ];
 
   constructor(private fb: FormBuilder) {}
 
@@ -25,9 +25,21 @@ export class ContactComponent implements OnInit {
     this.contactForm = this.fb.group({
       topic: [null, Validators.required],
       name: [null, Validators.required],
+      age: [null, [Validators.min(18), Validators.required]],
       email: [null, [Validators.email, Validators.required]],
-      message: '',
-      terms: false,
+      referenceNumber: [
+        null,
+        [Validators.pattern('[0-9]')],
+      ],
+      message: [
+        null,
+        [
+          Validators.minLength(20),
+          Validators.maxLength(200),
+          Validators.required,
+        ],
+      ],
+      terms: [false, Validators.requiredTrue],
     });
   }
 
