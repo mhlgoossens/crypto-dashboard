@@ -1,25 +1,44 @@
 <h1>Contact form</h1>
 <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label
-      >Topic:
-      <select class="form-control" formControlName="topic">
-        <option *ngFor="let t of topics">
-          {{t}}
-        </option>
-      </select>
-    </label>
-    <label
-      >Name:
-      <input type="text" formControlName="name" placeholder="Name or alias" />
-    </label>
-    <label>
-      Email:
-      <input type="email" formControlName="email" placeholder="rick@astley-industries.com">
-    </label>
+    <div>
+      <label
+        >Topic:
+        <select class="form-control" formControlName="topic">
+          <option *ngFor="let t of topics">
+            {{ t }}
+          </option>
+        </select>
+      </label>
+    </div>
+    <div>
+      <label
+        >Name:
+        <input
+          class="form-control"
+          type="text"
+          formControlName="name"
+          placeholder="Name or alias"
+        />  
+      </label>
+      <label>
+        Email:
+        <input
+          class="form-control"
+          type="email"
+          formControlName="email"
+          placeholder="rick@astley-industries.com"
+        />
+      </label>
+    </div>
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Message:</label>
-      <textarea class="form-control" formControlName="message" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <textarea
+        class="form-control"
+        formControlName="message"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
     </div>
     <div class="form-check">
       <input
@@ -34,5 +53,5 @@
       </label>
     </div>
   </div>
-  <button type="submit">Submit</button>
+  <button type="submit" class="btn btn-primary mb-2">Submit</button>
 </form>

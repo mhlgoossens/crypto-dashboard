@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -15,6 +16,8 @@ import { PortfolioComponent } from './features/portfolio/portfolio.component';
 // ngx bootstrap
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { AlertComponent } from './shared/alert/alert.component';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { GetCurrencyService } from './features/currencies/services/get-currency.service';
 
@@ -26,12 +29,15 @@ import { GetCurrencyService } from './features/currencies/services/get-currency.
     ProfileComponent,
     PortfolioComponent,
     HeaderComponent,
-    AlertComponent
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    CollapseModule.forRoot(),
+    BsDropdownModule.forRoot(),
     AlertModule.forRoot(),
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
