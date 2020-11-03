@@ -11,7 +11,7 @@
         </select>
       </label>
     </div>
-    <div>
+    <div class="form-group">
       <label
         >Name:
         <input
@@ -19,16 +19,34 @@
           type="text"
           formControlName="name"
           placeholder="Name or alias"
-        />  
+        />
+        <span
+          *ngIf="
+            !this.contactForm.get('name').valid &&
+            this.contactForm.get('name').touched
+          "
+          class="form-text text-muted"
+          >Please enter a valid name</span
+        >
       </label>
+    </div>
+    <div class="form-group">
       <label>
         Email:
         <input
           class="form-control"
-          type="email"
+          type="text"
           formControlName="email"
-          placeholder="rick@astley-industries.com"
+          placeholder="your @"
         />
+        <span
+          *ngIf="
+            !this.contactForm.get('email').valid &&
+            this.contactForm.get('email').touched
+          "
+          class="form-text text-muted"
+          >Please enter a valid email</span
+        >
       </label>
     </div>
     <div class="form-group">
@@ -55,3 +73,5 @@
   </div>
   <button type="submit" class="btn btn-primary mb-2">Submit</button>
 </form>
+
+<p>Status: {{ contactForm.status }}</p>
