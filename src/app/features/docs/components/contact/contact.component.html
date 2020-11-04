@@ -41,12 +41,20 @@
           placeholder="age"
         />
         <span
-          *ngIf="
-            !this.contactForm.get('age').valid &&
-            this.contactForm.get('age').touched
-          "
-          class="form-text text-muted"
-          >Must be 18 years of age or older</span
+        *ngIf="
+          this.contactForm.get('age').touched &&
+          !this.contactForm.get('age').valid
+        "
+        class="form-text text-muted"
+        >
+        <span *ngIf="this.contactForm.get('age').errors['required']">This field is required</span>
+        <span *ngIf="this.contactForm.get('age').errors['pattern']"
+          >Please enter only numbers</span
+        >
+        <span *ngIf="this.contactForm.get('age').errors['min']"
+          >Must be 18 years or older</span
+        >
+        </span
         >
       </label>
     </div>
@@ -84,7 +92,8 @@
             this.contactForm.get('referenceNumber').touched
           "
           class="form-text text-muted"
-          >Either leave empty, or enter a valid reference number. Only numbers (0-9) are accepted</span
+          >Either leave empty, or enter a valid reference number. Only numbers
+          (0-9) are accepted</span
         >
       </label>
     </div>
@@ -98,20 +107,22 @@
         rows="3"
       ></textarea>
       <span
-      *ngIf="
-        !this.contactForm.get('message').valid &&
-        this.contactForm.get('message').touched
-      "
-      class="form-text text-muted"
-      >Please enter a message between 20 and 200 characters</span
-    >
+        *ngIf="
+          !this.contactForm.get('message').valid &&
+          this.contactForm.get('message').touched
+        "
+        class="form-text text-muted"
+        >Please enter a message between 20 and 200 characters</span
+      >
     </div>
 
     <!-- implementing array below -->
     <div formArrayName="extrasArray" class="form-group">
       <label for="test-field">Testing array input:</label>
-      <input type="text">
-      <button type="button" class="btn btn-primary mb-2" (click)="arrayTest()">Test array</button>
+      <input type="text" />
+      <button type="button" class="btn btn-primary mb-2" (click)="arrayTest()">
+        Test array
+      </button>
     </div>
 
     <div class="form-check">
@@ -126,16 +137,25 @@
         Agree to terms
       </label>
       <span
-      *ngIf="
-        !this.contactForm.get('terms').valid &&
-        this.contactForm.get('terms').touched
-      "
-      class="form-text text-muted"
-      >Please agree to our <a href="https://www.youtube.com/watch?v=QD0uWNYLSbA">terms</a> before submitting</span
-    >
+        *ngIf="
+          !this.contactForm.get('terms').valid &&
+          this.contactForm.get('terms').touched
+        "
+        class="form-text text-muted"
+        >Please agree to our
+        <a href="https://www.youtube.com/watch?v=QD0uWNYLSbA">terms</a> before
+        submitting</span
+      >
     </div>
   </div>
-  <button type="submit" [disabled]="!this.contactForm.valid" class="btn btn-primary mb-2">Submit</button>
+  <button type="button" (click)="logForm()">Log form</button>
+  <button
+    type="submit"
+    [disabled]="!this.contactForm.valid"
+    class="btn btn-primary mb-2"
+  >
+    Submit
+  </button>
 </form>
 
 <p>Status: {{ contactForm.status }}</p>

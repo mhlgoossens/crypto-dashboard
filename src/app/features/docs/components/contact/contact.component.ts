@@ -29,7 +29,7 @@ export class ContactComponent implements OnInit {
       name: [null, [Validators.required, this.reservedNames.bind(this)]],
       age: [
         null,
-        [Validators.min(18), Validators.required, Validators.pattern('[0-9]*')],
+        [Validators.min(18), Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(2)],
       ],
       email: [null, [Validators.email, Validators.required]],
       referenceNumber: [null, [Validators.pattern('[0-9]*')]],
@@ -59,5 +59,9 @@ export class ContactComponent implements OnInit {
       return { reservedName: true}
     }
     // omit return OR return null means: control is valid'
+  }
+
+  logForm(): void {
+    console.log(this.contactForm);
   }
 }
