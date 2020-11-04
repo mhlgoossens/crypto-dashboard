@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -15,6 +15,8 @@ export class ContactComponent implements OnInit {
     'other',
   ];
 
+  reserved = ['admin', 'user', 'test'];
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -24,13 +26,13 @@ export class ContactComponent implements OnInit {
   initializeForm(): void {
     this.contactForm = this.fb.group({
       topic: [null, Validators.required],
-      name: [null, Validators.required],
-      age: [null, [Validators.min(18), Validators.required, Validators.pattern('[0-9]*')]],
-      email: [null, [Validators.email, Validators.required]],
-      referenceNumber: [
+      name: [null, [Validators.required, this.reservedNames.bind(this)]],
+      age: [
         null,
-        [Validators.pattern('[0-9]*')],
+        [Validators.min(18), Validators.required, Validators.pattern('[0-9]*')],
       ],
+      email: [null, [Validators.email, Validators.required]],
+      referenceNumber: [null, [Validators.pattern('[0-9]*')]],
       message: [
         null,
         [
@@ -40,10 +42,22 @@ export class ContactComponent implements OnInit {
         ],
       ],
       terms: [false, Validators.requiredTrue],
+      extrasArray: this.fb.array(['test', 'test2']),
     });
   }
 
   onSubmit(): void {
     console.log(this.contactForm);
+  }
+
+  arrayTest(): void {
+    console.log('array test clicked');
+  }
+
+  reservedNames(control: FormControl): { [s: string]: boolean } {
+    if(this.reserved.indexOf(control.value) !== -1) {
+      return { reservedName: true}
+    }
+    // omit return OR return null means: control is valid'
   }
 }

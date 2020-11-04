@@ -106,6 +106,14 @@
       >Please enter a message between 20 and 200 characters</span
     >
     </div>
+
+    <!-- implementing array below -->
+    <div formArrayName="extrasArray" class="form-group">
+      <label for="test-field">Testing array input:</label>
+      <input type="text">
+      <button type="button" class="btn btn-primary mb-2" (click)="arrayTest()">Test array</button>
+    </div>
+
     <div class="form-check">
       <input
         class="form-check-input"
